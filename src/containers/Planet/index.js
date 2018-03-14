@@ -22,8 +22,8 @@ class PlanetsListContainer extends React.Component {
     this.props.fetchPrevPlanets()
   }
   handleChange = ({ search }) => {
-    const { fetchPlanets, planet: { searchCounts } } = this.props;
-    if (this.props.login.data.name === 'Luke Skywalker' || searchCounts < 15) {
+    const { fetchPlanets, planet: { searchCounts,searchTime } } = this.props;
+    if (this.props.login.data.name === 'Luke Skywalker' || (searchCounts < 15 ||  ((((new Date() - searchTime) % 86400000) % 3600000) / 3600000 > 15))) {
       fetchPlanets(search)
     }
   }

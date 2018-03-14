@@ -10,7 +10,8 @@ export function loginUser({ userName, password }) {
             const { results } = loginData.data;
             const [userData] = results;
             const { name, birth_year } = userData;
-            if (name !== userName && birth_year !== password) {
+            debugger
+            if (name !== userName || birth_year !== password) {
                 return dispatch({
                     type: actionType.LOGIN_FAILURE,
                 })
